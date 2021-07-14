@@ -1,0 +1,166 @@
+@mixin flexBox($flexDirection, $alignItems, $justifyContent) {
+  display: flex;
+  flex-direction: $flexDirection;
+  justify-content: $justifyContent;
+  align-items: $alignItems;
+}
+@mixin size($width, $height) {
+  width: $width;
+  height: $height;
+}
+
+$lightGrey: #f6f6f6;
+$fullScreenWidth: 100vw;
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Roboto;
+  font-weight: 100;
+}
+
+.wrapper {
+  height: 100vh;
+  width: $fullScreenWidth;
+}
+
+.header {
+  @include flexBox(row, center, center);
+  @include size(100vw, 70px);
+  position: fixed;
+  color: #335c67;
+  z-index: 1;
+}
+
+.screenSplit {
+  @include flexBox(row, center, center);
+  @include size(100vw, calc(100vh - 70px));
+  flex-wrap: wrap;
+  padding-top: 70px;
+  background: rgb(255, 255, 255);
+  z-index: 0;
+}
+
+.contentWrapper {
+  @include size(50vw, calc(100vh - 70px));
+  min-width: 650px;
+  @include flexBox(column, center, flex-start);
+  overflow: scroll;
+}
+
+.accordion {
+  width: calc(550px - 40px);
+  background-color: $lightGrey;
+  @include flexBox(column, space-between, center);
+  padding: 0 20px;
+}
+
+.accordion-open {
+  @include size(500px, 110px);
+  @include flexBox(column, center, center);
+  form {
+    @include size(500px, 50px);
+    @include flexBox(row, center, center);
+  }
+}
+
+.accordionClose {
+  width: 520px;
+}
+
+.rowCenter {
+  @include size(500px, 70px);
+  @include flexBox(row, center, flex-end);
+}
+
+.input {
+  width: 120px;
+  margin: 10px !important;
+  transform: translateY(-14%);
+}
+
+.react-calendar {
+  @include size(550px, 400px);
+  @include flexBox(column, space-evenly, center);
+  margin: 20px;
+  min-width: 550px;
+  font-size: 20px;
+  border-radius: 5px;
+  border: none;
+  background-color: $lightGrey;
+  box-shadow: 1px 1px 1px #838383;
+}
+
+.react-calendar__navigation__label__labelText,
+.react-calendar__navigation__arrow {
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.react-calendar__month-view__days__day,
+.react-calendar__year-view__months__month,
+.react-calendar__decade-view__years__year {
+  font-size: 14px;
+}
+
+.react-calendar__month-view {
+  margin-top: 10px;
+}
+
+.hour {
+  height: 70px;
+  background: $lightGrey;
+  .hide {
+    opacity: 0;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+
+  .center {
+    @include flexBox(row, center, center);
+  }
+
+  .MuiListItemText-primary {
+    font-size: 25px !important;
+    font-weight: 100;
+    color: rgb(22, 22, 22);
+  }
+
+  &:hover {
+    background-color: rgb(204, 204, 204);
+    .hide {
+      opacity: 1;
+    }
+  }
+}
+
+::-webkit-scrollbar {
+  width: 0;
+  background: transparent;
+}
+
+.occupied {
+  @include flexBox(row, space-between, center);
+}
+
+.form {
+  width: 80%;
+  background-color: green;
+}
+
+.hover {
+  cursor: pointer;
+  &:hover {
+    color: white;
+  }
+}
+
+.hover2 {
+  cursor: pointer;
+  margin-top: 20px;
+  &:hover {
+    color: rgb(160, 47, 47);
+  }
+}
